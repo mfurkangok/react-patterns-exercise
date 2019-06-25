@@ -1,23 +1,23 @@
 // render props
 
 import React from 'react'
-import {Switch} from '../switch'
+import { Switch } from '../switch'
 
 class Toggle extends React.Component {
-  state = {on: false}
+  state = { on: false }
   toggle = () =>
     this.setState(
-      ({on}) => ({on: !on}),
+      ({ on }) => ({ on: !on }),
       () => {
         this.props.onToggle(this.state.on)
       },
     )
-    getStateAndHelpers() {
-        return {
-            on: this.state.on,
-            toggle: this.toggle
-        }
-    } 
+  getStateAndHelpers() {
+    return {
+      on: this.state.on,
+      toggle: this.toggle
+    }
+  }
   render() {
     return this.props.children(this.getStateAndHelpers());
   }
@@ -27,7 +27,7 @@ function Usage({
 }) {
   return (
     <Toggle onToggle={onToggle}>
-      {({on, toggle}) => (
+      {({ on, toggle }) => (
         <div>
           {on ? 'The button is on' : 'The button is off'}
           <Switch on={on} onClick={toggle} />
@@ -42,4 +42,4 @@ function Usage({
 }
 Usage.title = 'Render Props'
 
-export {Toggle, Usage as default}
+export { Toggle, Usage as default }
